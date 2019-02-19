@@ -12,7 +12,7 @@ int buttonState = 0;         // variable for reading the pushbutton status
 
 void setup() {
   // initialize the button pin as an input:
-  pinMode(buttonPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
 }
 
 void loop() {
