@@ -4,7 +4,7 @@ Working whth EchidnShield with C Arduino
 # PRACTICES
 
 # 1 Blink 
-[Código] https://github.com/Josepujol/Arduino-Echidna/blob/master/Blink/Blink.ino
+[Código]https://github.com/Josepujol/Arduino-Echidna/blob/master/Blink/Blink.ino
 
 # 2 Traffic Light
 
