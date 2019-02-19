@@ -1,5 +1,5 @@
 # Arduino-Echidna
-Working whth EchidnShield with C Arduino
+Working whth EchidnaShield with Arduino C
 
 # PRACTICES
 
