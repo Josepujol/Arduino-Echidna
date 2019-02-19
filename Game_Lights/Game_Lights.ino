@@ -16,7 +16,7 @@ const int buzzerPin = 10;
 int buttonState = 0;         // variable for reading the pushbutton status
 int n = 1; // variable to count
 unsigned long previousMillis = 0;        // will store last time LED was updated
-long interval = 600;            // variable to stablish the time to wait
+long interval = 400;            // variable to stablish the time to wait
 
 void setup() {
   // initialize the LEDs pin as an output:
@@ -51,8 +51,7 @@ void loop() {
       delay(200);
       analogWrite(buzzerPin, 0);
       delay(200);
-      n = 0;
-      interval = interval - 100;
+      interval = interval - 50;
     }
     else {
       analogWrite(buzzerPin, 10);
@@ -63,10 +62,10 @@ void loop() {
   }
   ledsecuence();
 
- if (interval==100){
-  music();
-  interval=600;
- }
+  if (interval == 50) {
+    musicwin();
+    interval = 600;
+  }
 }
 
 void ledsecuence() {
@@ -97,10 +96,38 @@ void ledsecuence() {
 
 }
 
-void music(){
+void musicwin() {
+#define NOTE_C4  262
+#define NOTE_G3  196
+#define NOTE_A3  220
+#define NOTE_B3  247
+  int melody[] = {
+    NOTE_C4, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_G3, 0, NOTE_B3, NOTE_C4
+  };
 
+  // note durations: 4 = quarter note, 8 = eighth note, etc.:
+  int noteDurations[] = {
+    4, 8, 8, 4, 4, 4, 4, 4
+  };
+  // iterate over the notes of the melody:
+  for (int thisNote = 0; thisNote < 8; thisNote++) {
+
+    // to calculate the note duration, take one second divided by the note type.
+    //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+    int noteDuration = 1000 / noteDurations[thisNote];
+    tone(10, melody[thisNote], noteDuration);
+
+    // to distinguish the notes, set a minimum time between them.
+    // the note's duration + 30% seems to work well:
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    // stop the tone playing:
+    noTone(10);
+  }
 
 }
+
+
 
 
 
